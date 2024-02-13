@@ -11,8 +11,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity //basic to speciy class as jpa entity
-@Table(name = "employees")  //basic to specity table data
+@Entity //basic to specify class as jpa entity
+@Table(name = "employees")  //basic to specify table data
 
 public class Employee {
     @Id
@@ -27,7 +27,10 @@ public class Employee {
 
     @Column(name = "email", nullable = false, unique = true)
     private String email;
+
+    @Column(name = "address")
     private String address;
+
     @Column(name = "phone_number")
     private Long phone;
 }
