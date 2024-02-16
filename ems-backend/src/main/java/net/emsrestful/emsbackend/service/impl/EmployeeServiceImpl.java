@@ -2,6 +2,8 @@ package net.emsrestful.emsbackend.service.impl;
 
 import lombok.AllArgsConstructor;
 import net.emsrestful.emsbackend.dto.EmployeeDto;
+import net.emsrestful.emsbackend.entity.Employee;
+import net.emsrestful.emsbackend.mapper.EmployeeMapper;
 import net.emsrestful.emsbackend.repo.EmployeeRepo;
 import net.emsrestful.emsbackend.service.EmployeeService;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeRepo employeeRepo;
     @Override
     public EmployeeDto createEmployee(EmployeeDto employeeDto) {
-        return null;
+
+//        we need to convert employeedto into jpa enity
+//        to store employe entiy into db
+
+        Employee employee = EmployeeMapper.mapToEmployee(employeeDto);
+        Employee savedEmployee = employeeRepo.save(employee);
+
+
+        return EmployeeMapper.mapToEmployeeDto(savedEmployee);
     }
 }
