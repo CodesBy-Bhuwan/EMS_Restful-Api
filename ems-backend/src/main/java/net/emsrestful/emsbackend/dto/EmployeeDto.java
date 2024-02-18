@@ -23,10 +23,8 @@ public class EmployeeDto {
 
     private String email;
 
-    private Long phone;
-
     private String address;
 
-
+    private Long phone;
 
 }
