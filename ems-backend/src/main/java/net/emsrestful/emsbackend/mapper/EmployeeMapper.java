@@ -8,22 +8,22 @@ public class EmployeeMapper {
     public static EmployeeDto mapToEmployeeDto(Employee employee){
         return new EmployeeDto(
                 employee.getId(),
-                employee.getAddress(),
                 employee.getFirstName(),
                 employee.getLastName(),
-                employee.getPhone(),
-                employee.getEmail()
+                employee.getEmail(),
+                employee.getAddress(),
+                employee.getPhone()
         );
     }
 
     public static Employee mapToEmployee(EmployeeDto employeeDto){
         return new Employee(
                 employeeDto.getId(),
-                employeeDto.getAddress(),
                 employeeDto.getFirstName(),
                 employeeDto.getLastName(),
-                employeeDto.getPhone(),
-                employeeDto.getEmail()
+                employeeDto.getEmail(),
+                employeeDto.getAddress(),
+                employeeDto.getPhone()
         );
     }
 }
