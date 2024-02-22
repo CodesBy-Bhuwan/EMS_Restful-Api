@@ -3,6 +3,7 @@ package net.emsrestful.emsbackend.service.impl;
 import lombok.AllArgsConstructor;
 import net.emsrestful.emsbackend.dto.EmployeeDto;
 import net.emsrestful.emsbackend.entity.Employee;
+import net.emsrestful.emsbackend.exception.ResourceNotFound;
 import net.emsrestful.emsbackend.mapper.EmployeeMapper;
 import net.emsrestful.emsbackend.repo.EmployeeRepo;
 import net.emsrestful.emsbackend.service.EmployeeService;
@@ -27,7 +28,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+//    This is give us details of emp using employeeid
     public EmployeeDto getEmployeeById(Long employeeId) {
+        Employee employee = employeeRepo.findById(employeeId)
+                .orElseThrow(() -> 
+                        new ResourceNotFound("Employee doesn't exists : " + employeeId));
+
         return null;
     }
 }
