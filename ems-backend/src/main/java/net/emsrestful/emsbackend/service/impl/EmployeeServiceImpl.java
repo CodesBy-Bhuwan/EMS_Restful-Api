@@ -34,6 +34,6 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .orElseThrow(() -> 
                         new ResourceNotFound("Employee doesn't exists : " + employeeId));
 
-        return null;
+        return EmployeeMapper.mapToEmployeeDto(employee);
     }
 }
