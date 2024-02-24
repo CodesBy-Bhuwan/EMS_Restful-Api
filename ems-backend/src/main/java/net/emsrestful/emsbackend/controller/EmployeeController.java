@@ -1,7 +1,6 @@
 package net.emsrestful.emsbackend.controller;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import net.emsrestful.emsbackend.dto.EmployeeDto;
 import net.emsrestful.emsbackend.service.EmployeeService;
 import org.springframework.http.HttpStatus;
@@ -24,9 +23,9 @@ public class EmployeeController {
     }
 
 //    Area to build Emp  Rest api
-    @GetMapping("{id")
+    @GetMapping("{id}")
     public  ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable("id") Long employeeId){
-//        Annoting pathvar due to id->uri and employeeId are named different so to prescribe them as single thing
+//        Annoting path var due to id->uri and employeeId are named different so to prescribe them as single thing
         EmployeeDto employeeDto = employeeService.getEmployeeById(employeeId);
         return ResponseEntity.ok(employeeDto);
     }
