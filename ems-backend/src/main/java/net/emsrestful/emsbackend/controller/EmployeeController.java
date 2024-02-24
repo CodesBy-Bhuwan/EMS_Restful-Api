@@ -1,14 +1,12 @@
 package net.emsrestful.emsbackend.controller;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import net.emsrestful.emsbackend.dto.EmployeeDto;
 import net.emsrestful.emsbackend.service.EmployeeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
 @RestController //will be to handle http req
@@ -23,6 +21,14 @@ public class EmployeeController {
 //        @requestBody will extract json from json and convert json into employeedto java obj
         EmployeeDto savedEmployee = employeeService.createEmployee(employeeDto);
         return  new ResponseEntity<>(savedEmployee, HttpStatus.CREATED);
+    }
+
+//    Area to build Emp  Rest api
+    @GetMapping("{id")
+    public  ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable("id") Long employeeId){
+//        Annoting pathvar due to id->uri and employeeId are named different so to prescribe them as single thing
+        EmployeeDto employeeDto = employeeService.getEmployeeById(employeeId);
+        return ResponseEntity.ok(employeeDto);
     }
 
 }
