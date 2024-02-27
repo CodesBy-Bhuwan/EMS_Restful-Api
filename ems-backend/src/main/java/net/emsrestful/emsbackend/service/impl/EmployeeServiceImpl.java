@@ -7,6 +7,7 @@ import net.emsrestful.emsbackend.exception.ResourceNotFound;
 import net.emsrestful.emsbackend.mapper.EmployeeMapper;
 import net.emsrestful.emsbackend.repo.EmployeeRepo;
 import net.emsrestful.emsbackend.service.EmployeeService;
+import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,5 +46,15 @@ public class EmployeeServiceImpl implements EmployeeService {
         List<Employee> employees = employeeRepo.findAll();
         return employees.stream().map(employee -> EmployeeMapper.mapToEmployeeDto(employee))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public EmployeeDto updateEmployee(Long employeeId, EmployeeDto updateEmployee) {
+
+       Employee employee = employeeRepo.findById(employeeId).orElseThrow(
+                () -> new ResourceNotFound("Employee not found" + employeeId)
+//        Its better if we use ResourceNotFoundException instead of old concept
+                );
+        return null;
     }
 }
