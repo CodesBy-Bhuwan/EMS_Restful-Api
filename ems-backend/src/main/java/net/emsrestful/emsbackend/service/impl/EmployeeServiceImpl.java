@@ -55,6 +55,14 @@ public class EmployeeServiceImpl implements EmployeeService {
                 () -> new ResourceNotFound("Employee not found" + employeeId)
 //        Its better if we use ResourceNotFoundException instead of old concept
                 );
-        return null;
+       employee.setFirstName(updateEmployee.getFirstName());
+       employee.setLastName(updateEmployee.getLastName());
+       employee.setEmail(updateEmployee.getEmail());
+       employee.setPhone(updateEmployee.getPhone());
+       employee.setAddress(updateEmployee.getAddress());
+
+       Employee updatedEmployeeObj = employeeRepo.save(employee);
+//       This save keyword will update+save also will be able to insert id if is absent
+        return EmployeeMapper.mapToEmployeeDto(updatedEmployeeObj);
     }
 }
