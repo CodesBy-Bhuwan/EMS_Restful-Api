@@ -65,4 +65,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 //       This save keyword will update+save also will be able to insert id if is absent
         return EmployeeMapper.mapToEmployeeDto(updatedEmployeeObj);
     }
+
+    @Override
+    public void deleteEmployee(Long employeeId) {
+        
+    }
 }
