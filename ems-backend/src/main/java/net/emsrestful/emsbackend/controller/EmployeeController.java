@@ -37,5 +37,15 @@ public class EmployeeController {
         List<EmployeeDto> employees = employeeService.getAllEmployees();
         return ResponseEntity.ok(employees);
     }
+// Update Rest Api here
+    @PutMapping("{id}")
+//    To map incoming http put req to this method
+    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable("id") Long employeeId,
+                                                      @RequestBody EmployeeDto updateEmployee){
+        EmployeeDto employeeDto = employeeService.updateEmployee(employeeId, updateEmployee);
+        return ResponseEntity.ok(employeeDto);
+    }
+
+
 
 }

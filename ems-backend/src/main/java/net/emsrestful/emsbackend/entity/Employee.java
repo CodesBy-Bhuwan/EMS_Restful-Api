@@ -31,6 +31,6 @@ public class Employee {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "phone_number")
+    @Column(name = "phone")
     private Long phone;
 }
